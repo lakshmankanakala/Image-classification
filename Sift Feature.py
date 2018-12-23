@@ -3,7 +3,7 @@ import cv2
 from scipy.misc import imread, imsave, imresize
 import numpy as np
 from time import sleep
-image = cv2.imread("/home/rgukt/Desktop/rat.jpg")
+image = cv2.imread("./rat.jpg")
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 q= imresize(gray,(100,100))
 sift = cv2.xfeatures2d.SIFT_create()
