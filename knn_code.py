@@ -103,8 +103,8 @@ def main():
     trainingSet=[]
     testSet=[]
     split = 1
-    loadDataset1('minitrain.csv',split,  trainingSet)
-    loadDataset2('minitest.csv', split, testSet)
+    loadDataset1('trainset.csv',split,  trainingSet)
+    loadDataset2('testset.csv', split, testSet)
     print ('Train set: ' + repr(len(trainingSet)))
     print ('Test set: ' + repr(len(testSet)))    
     predictions=[]
