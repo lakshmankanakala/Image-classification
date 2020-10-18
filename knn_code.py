@@ -6,7 +6,7 @@ from time import sleep
 
 # Split the data into trainingset
 def loadDataset1(filename,split,trainingSet=[] ):
-    with open(filename, 'rb') as csvfile:
+    with open(filename, 'r') as csvfile:
         lines = csv.reader(csvfile)
         dataset = list(lines)
         for x in range(len(dataset)):
@@ -18,7 +18,7 @@ def loadDataset1(filename,split,trainingSet=[] ):
 # Split the data into TestSet
 
 def loadDataset2(filename,split,testSet=[]):
-    with open(filename, 'rb') as csvfile:
+    with open(filename, 'r') as csvfile:
         lines = csv.reader(csvfile)
         dataset = list(lines)
         for x in range(len(dataset)):
@@ -37,8 +37,8 @@ def euclideanDistance(instance1, instance2, length):
     distance = 0
     for x in range(length):
         distance += pow((float(instance1[x]) - float(instance2[x])), 2)
-          return math.sqrt(distance)
-    print("euclid   ")
+    return math.sqrt(distance)
+    #print("euclid   ")
 
 
     ## here we will get the neighbors
@@ -80,9 +80,9 @@ def getResponse(neighbors):
             classVotes[response] += 1
         else:
             classVotes[response] = 1
-        print(classVotes)
-    sortedVotes = sorted(classVotes.iteritems(), key=operator.itemgetter(1), reverse=False)
-    print(sortedVotes)
+        #print(classVotes)
+    sortedVotes = sorted(classVotes.items(), key=operator.itemgetter(1), reverse=False)
+    #print(sortedVotes)
     return sortedVotes[0][0]
  
    ## finding accuracy
@@ -93,7 +93,7 @@ def getAccuracy(testSet, predictions):
         for x in range(len(testSet)):
             if testSet[x][-1] == predictions[y]:
                 correct += 1
-                print(correct)
+                #print(correct)
         #print(len(testSet))
     return (correct/float(len(testSet))) * 100.0
  
@@ -103,8 +103,8 @@ def main():
     trainingSet=[]
     testSet=[]
     split = 1
-    loadDataset1('trainset.csv',split,  trainingSet)
-    loadDataset2('testset.csv', split, testSet)
+    loadDataset1('./trainset.csv',split,  trainingSet)
+    loadDataset2('./testset.csv', split, testSet)
     print ('Train set: ' + repr(len(trainingSet)))
     print ('Test set: ' + repr(len(testSet)))    
     predictions=[]
